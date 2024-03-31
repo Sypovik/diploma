@@ -5,7 +5,7 @@ import {View, FlatList, Button, TouchableOpacity} from 'react-native';
 
 import Header from './header';
 import ListItem from './listItem';
-import Form from './form';
+import Form from './form_tresh';
 
 export default function List({navigation}) {
 

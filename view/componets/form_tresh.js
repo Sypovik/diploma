@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
 
-export default function Form({addHandler}) {
+export default function form({addHandler}) {
 
     const [text, setText] = useState('');
 
@@ -11,7 +11,8 @@ export default function Form({addHandler}) {
 
   return (
     <View style={styles.main}>
-        <TextInput style={styles.input} onChangeText={onChange} placeholder='Enter text'/>
+        <Text style={styles.text}>Название коктейля</Text>
+        <TextInput style={styles.input} onChangeText={onChange} placeholder='Название коктейля'/>
         <Button title='Добавить' onPress={() => addHandler(text)}/>
     </View>
   );

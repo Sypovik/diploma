@@ -9,6 +9,7 @@ RUN npm install --global @expo/ngrok@^4.1.0
 RUN npm install --global @react-navigation/native
 RUN npm install --global @react-navigation/stack
 RUN npm install --global install react-native-web react-dom @expo/metro-runtime react-native-screens react-native-safe-area-context react-native-gesture-handler
+RUN npm install --global formik
 
 
 WORKDIR /app/view
