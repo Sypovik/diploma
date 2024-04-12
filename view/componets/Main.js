@@ -9,7 +9,8 @@ export default function Main({navigation}) {
     return (
         <View style={styles.main}>
             <View style={styles.button}><Button title='Добавить' onPress={() => navigation.navigate('AddItem')}/></View>
-            <View style={styles.button}><Button title='Показать' /></View>
+            <View style={styles.button}><Button title='Показать' onPress={() => navigation.navigate('List')}/></View>
+            <View style={styles.button}><Button title='Recognition' onPress={() => navigation.navigate('Recognition')}/></View>
         </View>
     );
 }

@@ -7,7 +7,7 @@ import Header from './header';
 import ListItem from './listItem';
 import Form from './form_tresh';
 
-export default function List({navigation}) {
+export default function List_tresh({navigation}) {
 
     const [listOfItems, setListOfItems] = useState([
         { text: 'Milk', index: '1' },

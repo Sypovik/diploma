@@ -10,6 +10,8 @@ RUN npm install --global @react-navigation/native
 RUN npm install --global @react-navigation/stack
 RUN npm install --global install react-native-web react-dom @expo/metro-runtime react-native-screens react-native-safe-area-context react-native-gesture-handler
 RUN npm install --global formik
+RUN npm install --global @react-native-community/voice --save
+RUN npm install --global eas-cli
 
 
 WORKDIR /app/view
