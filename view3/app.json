@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "view3",
+    "slug": "view3",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "view3"
+}
