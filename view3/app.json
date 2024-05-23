@@ -5,7 +5,18 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.anonymous.view3"
+    },
+    "ios": {
+      "bundleIdentifier": "com.anonymous.view3"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4a2799b2-6115-4a96-b9af-2670b333cc44"
+      }
+    }
   },
   "name": "view3"
 }

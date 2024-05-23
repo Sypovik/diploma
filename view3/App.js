@@ -1,23 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Voice from 'react-native-voice';
+
 
 export default function App() {
+  const [isListening, setIsListening] = useState(false);
+  const [note, setNote] = useState('');
+  const startListening = () => {
+    setIsListening(true);
+    Voice.start('en-US');
+  };
+  const stopListening = () => {
+    setIsListening(false);
+    Voice.stop();
+  };
+  Voice.onSpeechResults = (e) => {
+    setNote(e.value[0]); // Capture the recognized speech
+    stopListening();
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      {isListening ? (
+        <Text>Listening...</Text>
+      ) : (
+        <>
+          <Text>{note}</Text>
+          <TouchableOpacity onPress={startListening}>
+            <Text>Start Listening</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

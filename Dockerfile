@@ -20,6 +20,7 @@ WORKDIR /app/view
 EXPOSE 80
 EXPOSE 4000
 EXPOSE 8081
+EXPOSE 5037
 
 RUN useradd -ms /bin/bash nikita
 USER nikita
