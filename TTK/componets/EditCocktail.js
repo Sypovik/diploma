@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TextInput, Button, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import SQLite from 'react-native-sqlite-storage';
 import { updateCocktail, openDatabaseKocktails } from '../db/dbService';
 
 const db = openDatabaseKocktails();
