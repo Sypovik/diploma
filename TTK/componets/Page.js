@@ -40,7 +40,7 @@ export default function Page({ route, navigation }) {
     useEffect(() => {
         navigation.setOptions({
             headerTitle: () => (
-                <Search setSearch={setSearch} searchText={false} handleSpeechEnd={(searchText) => {
+                <Search setSearch={setSearch} searchButton={false} handleSpeechEnd={(searchText) => {
                     console.log('Speech ended with text:', searchText);
                     filterList(searchText);
                 }} />

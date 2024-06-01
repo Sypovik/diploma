@@ -1,0 +1,20 @@
+Напиши пункт настройка окружения
+
+Я работая в vscode из дополнений использую только расширение для docker
+Для работы я использую докер и докерфайл
+Для его запуска использую bash скрипт 
+Распиши каждый пункт docekrfile и bash скрипта, зачем это все нужно
+Напиши зачем использовать ohmyzsh
+
+
+https://hub.docker.com/r/reactnativecommunity/react-native-android/     (docker образ для reactnative)
+https://reactnative.dev/docs/running-on-device                          (инструкция по запуску reactnative android USB)
+
+https://code.visualstudio.com/                                          (VScode)
+https://github.com/ohmyzsh/ohmyzsh                                      (ohmyzsh)
+https://github.com/Sypovik/diploma                                      (github)
+
+
+https://docs.npmjs.com/cli/v7/commands/npm-install                      (npm)
+https://github.com/th3rdwave/react-native-safe-area-context             (safe-area-context)
+https://github.com/react-native-voice/voice                             (react-native-voice)

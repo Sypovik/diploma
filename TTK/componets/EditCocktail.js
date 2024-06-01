@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, TextInput, Button, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { updateCocktail, openDatabaseKocktails } from '../db/dbService';
 
 const db = openDatabaseKocktails();
@@ -14,6 +14,10 @@ export default function EditCocktail({ route, navigation }) {
 
   useEffect(() => {
     fetchCocktail();
+    navigation.setOptions({
+      headerTitle: 'Редактирование',
+      headerTitleAlign: 'center', // Выровнять название topBar посередине
+    });
   }, []);
 
   const fetchCocktail = () => {
@@ -67,24 +71,25 @@ export default function EditCocktail({ route, navigation }) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.form}>
-        <Text style={styles.header}>Edit Cocktail</Text>
         <TextInput
           style={styles.input}
           placeholder="Name"
           value={name}
           onChangeText={setName}
         />
-        <TextInput
+        {/* <TextInput
           style={styles.input}
           placeholder="Image"
           value={image}
           onChangeText={setImage}
-        />
+        /> */}
         <TextInput
-          style={styles.input}
+          style={styles.textArea}
           placeholder="Description"
           value={description}
           onChangeText={setDescription}
+          multiline={true}
+          numberOfLines={4}
         />
         {ingredients.map((ingredient, index) => (
           <View key={index} style={styles.ingredientContainer}>
@@ -101,14 +106,19 @@ export default function EditCocktail({ route, navigation }) {
               onChangeText={(value) => handleIngredientChange(index, 'amt', value)}
             />
             <TouchableOpacity style={styles.removeButton} onPress={() => removeIngredient(index)}>
-              <Text style={styles.removeButtonText}>Remove</Text>
+              <Text style={styles.removeButtonText}>Удалить</Text>
             </TouchableOpacity>
           </View>
         ))}
         <TouchableOpacity style={styles.addButton} onPress={addIngredient}>
-          <Text style={styles.addButtonText}>Add Ingredient</Text>
+          <Text style={styles.addButtonText}>Добавить ингредиент</Text>
         </TouchableOpacity>
-        <Button title="Save" onPress={handleSave} />
+
+        <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+          <Text style={styles.addButtonText}>Сохранить</Text>
+        </TouchableOpacity>
+
+        {/* <Button title="Удалить" onPress={handleSave} /> */}
       </View>
     </ScrollView>
   );
@@ -131,12 +141,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
   input: {
     height: 50,
     borderColor: '#ccc',
@@ -145,6 +149,16 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginBottom: 10,
     fontSize: 18,
+  },
+  textArea: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 15,
+    marginBottom: 10,
+    fontSize: 18,
+    height: 200, // Increased height for multiline input
+    textAlignVertical: 'top', // Ensure text starts at the top-left corner
   },
   ingredientContainer: {
     marginBottom: 10,
@@ -177,6 +191,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
   },
+
+  saveButton: {
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#2196f3',
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+
   removeButtonText: {
     color: '#fff',
     fontSize: 14,

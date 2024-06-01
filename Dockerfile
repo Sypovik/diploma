@@ -14,7 +14,6 @@ RUN npm install --global @react-native-community/voice --save
 RUN npm install --global eas-cli
 
 
-
 WORKDIR /app/view
 
 EXPOSE 80

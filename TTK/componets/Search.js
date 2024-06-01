@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import Voice from '@react-native-community/voice';
 
-export default function Search({ setSearch, handleSpeechEnd, searchText = true }) {
+export default function Search({ setSearch, handleSpeechEnd, searchButton = true }) {
     const [isLoading, setLoading] = useState(false);
 
     const startListening = () => {
@@ -16,7 +16,7 @@ export default function Search({ setSearch, handleSpeechEnd, searchText = true }
     };
 
     const _onSpeechStart = () => {
-        setSearch(' ');
+        setSearch('');
     };
 
     const _onSpeechEnd = () => {
@@ -47,7 +47,7 @@ export default function Search({ setSearch, handleSpeechEnd, searchText = true }
         };
     }, []);
 
-    const buttonWidth = searchText ? "48%" : "96%";
+    const buttonWidth = searchButton ? "48%" : "97%";
 
     return (
         <View style={styles.search}>
@@ -64,7 +64,7 @@ export default function Search({ setSearch, handleSpeechEnd, searchText = true }
                 </TouchableOpacity>
             ) : (
 
-                searchText
+                searchButton
                     ? (
                         <TouchableOpacity style={[styles.button, styles.searchButton]} onPress={() => handleSpeechEnd()}>
                             <Text style={styles.buttonText}>Поиск</Text>

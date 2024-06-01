@@ -14,6 +14,11 @@ export default function List({ route, navigation }) {
 
     useEffect(() => {
         fetchData();
+        navigation.setOptions({
+            headerTitle: Mode === "edit" ? 'Редактирование коктейлей' : 'Список коктейлей',
+            headerTitleAlign: 'center', // Выровнять название topBar посередине
+
+        });
     }, []);
 
     const fetchData = () => {
@@ -87,7 +92,7 @@ export default function List({ route, navigation }) {
                 placeholder='Название коктейля'
                 value={search}
             />
-            <Search setSearch={setSearch} handleSpeechEnd={filterList} />
+            <Search setSearch={setSearch} handleSpeechEnd={filterList} searchButton={false} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.buttonClear} onPress={() => filterList("")}>
                     <Text style={styles.buttonText}>Очистить</Text>
