@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, TextInput, View, FlatList, Text, TouchableOpacity, TouchableHighlight, ActivityIndicator } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 import Search from './Search';
@@ -20,6 +21,12 @@ export default function List({ route, navigation }) {
 
         });
     }, []);
+
+    useFocusEffect(
+        useCallback(() => {
+            fetchData();
+        }, [])
+    );
 
     const fetchData = () => {
         setLoading(true);

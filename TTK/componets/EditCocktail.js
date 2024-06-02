@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import Dialog from "react-native-dialog";
 import { updateCocktail, openDatabaseKocktails } from '../db/dbService';
 
 const db = openDatabaseKocktails();
@@ -11,6 +12,8 @@ export default function EditCocktail({ route, navigation }) {
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
+  const [isDialogVisible, setDialogVisible] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
 
   useEffect(() => {
     fetchCocktail();
@@ -42,7 +45,26 @@ export default function EditCocktail({ route, navigation }) {
     });
   };
 
+  const showDialog = (message) => {
+    setDialogMessage(message);
+    setDialogVisible(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogVisible(false);
+  };
+
   const handleSave = () => {
+    if (!name) {
+      showDialog('Нет названия коктейля');
+      return;
+    }
+
+    if (ingredients.length === 0) {
+      showDialog('Нет ни одного игридиента');
+      return;
+    }
+    
     const updatedCocktail = {
       name,
       image,
@@ -117,9 +139,14 @@ export default function EditCocktail({ route, navigation }) {
         <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
           <Text style={styles.addButtonText}>Сохранить</Text>
         </TouchableOpacity>
-
-        {/* <Button title="Удалить" onPress={handleSave} /> */}
       </View>
+      <Dialog.Container visible={isDialogVisible}>
+        {/* <Dialog.Title>Warning</Dialog.Title> */}
+        <Dialog.Description>
+          {dialogMessage}
+        </Dialog.Description>
+        <Dialog.Button label="OK" onPress={handleDialogClose} />
+      </Dialog.Container>
     </ScrollView>
   );
 }

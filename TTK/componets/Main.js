@@ -29,9 +29,9 @@ export default function Main({ navigation }) {
         <View style={styles.main}>
             <View style={styles.button}><Button title='Посмотреть' onPress={() => navigation.navigate('List', { Mode: "review" })} /></View>
             <View style={styles.button}><Button title='Редактировать' onPress={() => navigation.navigate('List', { Mode: "edit" })} /></View>
-            <View style={styles.button}><Button title='удалить бд' onPress={() => {
+            {/* <View style={styles.button}><Button title='удалить бд' onPress={() => {
                 clearDatabaseKoktels();
-            }} /></View>
+            }} /></View> */}
         </View>
     );
 }
